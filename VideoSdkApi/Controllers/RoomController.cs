@@ -7,13 +7,6 @@ namespace VideoSdkApi.Controllers
     [Route("[controller]")]
     public class RoomController(IRoomsApi roomsApi) : ControllerBase
     {
-        [HttpGet("Rooms")]
-        public async Task<IActionResult> GetRooms([FromQuery] int pageNumber)
-        {
-            var rooms = await roomsApi.GetRooms(pageNumber);
-            return Ok(rooms);
-        }
-
         [HttpPost("CreateRoom")]
         public async Task<IActionResult> CreateRoom()
         {

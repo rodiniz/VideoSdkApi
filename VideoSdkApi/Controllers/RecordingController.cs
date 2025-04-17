@@ -7,7 +7,7 @@ namespace VideoSdkApi.Controllers;
 [ApiController]
 public class RecordingController(IRecordingApi recordingApi) : ControllerBase
 {
-    [HttpPost("Start")]
+    [HttpPost("Start/{roomId}")]
     public async Task<IActionResult> StartRecorging(string roomId, string recordingMode = "video-and-audio")
     {
         var recordingConfig = new Recording
@@ -30,7 +30,7 @@ public class RecordingController(IRecordingApi recordingApi) : ControllerBase
         return status == "Recording started successfully" ? Ok() : BadRequest();
     }
 
-    [HttpPost("End")]
+    [HttpPost("End/{roomId}")]
     public async Task<IActionResult> EndRecorging(string roomId)
     {
         var status = await recordingApi.StopRecording(roomId);
